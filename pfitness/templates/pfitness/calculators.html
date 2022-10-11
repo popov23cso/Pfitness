@@ -1,0 +1,60 @@
+{% extends "pfitness/layout.html" %}
+{% load static %}
+
+{% block title %}
+    Fitness calculators
+{% endblock %}
+
+{% block body %}
+<h3 style="margin-bottom: 40px;text-align: center;">
+    Our diet calculators:
+</h3>
+
+<div style="margin-bottom: 30px;text-align: center;" class="container">
+    <button type="button" class="btn btn-light" id="calculator" data-type="calories">Calories</button>
+    <button type="button" class="btn btn-light" id="calculator" data-type="protein">Protein</button>
+</div>
+
+<div id="calories">
+    <form id="calorieform">
+        <select class="form-select" id="calorieselect" style="margin-bottom: 20px;">
+            <option selected disabled>Select your goal</option>
+            <option value="1">Maintaining</option>
+            <option value="2">Bulking</option>
+            <option value="3">Losing weight</option>
+        </select>
+        <div class="mb-3">
+          <label for="weight" class="form-label">Weight in kg</label>
+          <input class="form-control" id="weight" required autocomplete="off" >
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-bottom: 20px;">Calculate</button>
+        <p>
+            Daily calories needed: <text id="result"></text>
+        </p>
+      </form>
+</div>
+
+
+<div id="protein" class="calc">
+    <form id="proteinform">
+        <div class="mb-3">
+          <label for="pweight" class="form-label">Weight in kg</label>
+          <input class="form-control" id="pweight" required autocomplete="off">
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-bottom: 20px;">Calculate</button>
+        <p>
+            Grams of protein per day: <text id="presult"></text>
+        </p>
+      </form>
+</div>
+
+<div class="alert alert-info" role="alert">
+    Note: every person is different and theese results are meant to be threated as a helping hand. The best result will always come from you fine
+    tuning your diet and seeing the results!
+  </div>
+{% endblock %}
+
+
+{% block script %}
+    <script src="{% static 'pfitness/calculators.js' %}"></script>
+{% endblock %}

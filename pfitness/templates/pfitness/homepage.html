@@ -1,0 +1,22 @@
+{% extends "pfitness/layout.html" %}
+
+{% block title %}
+    Homepage
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h3>
+        Welcome {{user.username}}
+    </h2>
+    <p>
+        You may visit your <a href="{% url 'profile' %}">profile page</a> to set up or update your personal fitness info.
+    </p>
+    <p>
+        Document your fitness journey using our <a href="{% url 'notebook' %}">fitness notebook</a>
+    </p>
+    <p>
+        View <a href="{% url 'foods' type='protein' %}">nutrition facts</a> that can help you decide what to eat today!
+    </p>
+</div>
+{% endblock %}

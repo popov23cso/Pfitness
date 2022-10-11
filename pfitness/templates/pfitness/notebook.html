@@ -1,0 +1,46 @@
+{% extends "pfitness/layout.html" %}
+{% load static %}
+
+{% block title %}
+    Notebook
+{% endblock %}
+
+{% block token %}
+    {% csrf_token %}
+{% endblock %}
+
+
+{% block body %}
+<h2 style="text-align:center;">Notebook:</h2>
+<div class="container">
+    <textarea class="form-control" id="notecontent" placeholder="Describe your fitness related thought" maxlength ="255" required></textarea>
+    <br>
+    <button type="button" id="addnote" class="btn btn-light">Add note</button>
+</div>
+<br>
+<h3>All notes:</h3>
+<br>
+<div class="container">
+    {% if notes %}
+    <ul class="list-group" id="notelist">
+        {% for note in notes %}
+        <li class="list-group-item" id="note">{{note.content}} <br> {{note.timestamp}}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+
+{% if notes.has_previous %}
+    <a class="btn btn-light" id="notepages" href="?page={{notes.previous_page_number}}" role="button">Previous page</a>
+{% endif %}
+{% if notes.has_next %}
+    <a class="btn btn-light" id="notepages" href="?page={{notes.next_page_number}}" role="button">Next page</a>
+{% endif %}
+
+
+{% endblock %}
+
+
+{% block script %}
+    <script src="{% static 'pfitness/notes.js' %}"></script>
+{% endblock %}

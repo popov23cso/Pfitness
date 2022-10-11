@@ -1,0 +1,12 @@
+{% extends "pfitness/layout.html" %}
+
+{% block title %}
+    Error!
+{% endblock %}
+
+{% block body %}
+<div class="container" style="text-align:center;">
+    <h3>{{error}}</h3>
+    <button class="btn btn-primary"><a href="{% url 'index' %}" style="color:black;">Go back</a></button>
+</div>
+{% endblock %}

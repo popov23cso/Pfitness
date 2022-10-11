@@ -1,0 +1,32 @@
+{% extends "pfitness/layout.html" %}
+
+
+{% block body %}
+<div class="container">
+    <h3 style="text-align: center;">Welcome to PFitness where you can acheive your goals!</h3>
+    <h5>Our goals:</h5>
+    <p>Nowadays people often forget just how important our physical fitness is. There are multiple studies done
+        that excercise makes us happier and it can also affect our discipline and self control which are vital in our
+        day to day life, so we want to help people make a step in the right direction!
+    </p>
+    <p>
+        First of all we strive to make excercise fun - it doesn`t need to be grueling or boring like some make it out to be!
+        Keeping that in mind we have grouped the excercises in three levels - beginner, intermediate and experienced, so you 
+        can pick the one that suits you!
+    </p>
+    <p>
+        Once you have choosen a program you will be able to view excercises that belong to the type of training you prefer but if
+        you feel like it you may browse all kinds of excercises
+    </p>
+    <p>
+        Our users also get features that help them with calculating their daily calorie goals and also calculating their daily
+        protein intake.
+    </p>
+    <p>
+        So if you are interested into getting and maintaining a good physical shape feel free to sign up for our site!
+    </p>
+    {% if not user.is_authenticated %}
+    <a href="{% url 'register' %}"><button type="button" class="btn btn-success">Sign up</button></a>
+    {% endif %}
+</div>
+{% endblock %}

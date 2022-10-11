@@ -1,0 +1,22 @@
+{% extends "pfitness/layout.html" %}
+
+
+{% block body %}
+<form action="{% url 'login' %}" method="post">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label for="usernameinput" class="form-label">Username</label>
+    <input type="text" class="form-control" id="usernameinput" name="username">
+  </div>
+  <div class="mb-3">
+    <label for="passwordinput" class="form-label">Password</label>
+    <input type="password" class="form-control" id="passwordinput" name="password">
+  </div>
+  <button type="submit" class="btn btn-primary">Log in</button>
+</form>
+{% if error %}
+  <div class="alert alert-danger" role="alert">
+    {{error}}
+  </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "pfitness/layout.html" %}
+{% load static %}
+
+{% block title %}
+    My exercises
+{% endblock %}
+
+{% block token %}
+    {% csrf_token %}
+{% endblock %}
+
+
+{% block body %}
+<h2 style="text-align:center;">My exercises:</h2>
+
+<div class="container">
+    {% if exercises %}
+    <ul class="list-group" id="notelist">
+        {% for ex in exercises %}
+            <div style="border:thin solid; border-radius: 25px; padding: 20px; margin-bottom: 20px;" id="record" data-name="{{ex.name}}">
+                <text>
+                    {{ex.name}}
+                    <br>
+                    {{ex.level}}
+                </text>
+            </div>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'pfitness/myExercises.js' %}"></script>
+{% endblock %}

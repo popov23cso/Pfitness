@@ -1,0 +1,43 @@
+{% extends "pfitness/layout.html" %}
+
+{% load static %}
+
+{% block title %}
+    Programs
+{% endblock %}
+
+{% block body %}
+    <h3>Pick the type of workouts you are the most interested in:</h3>
+    <div class="container" style="margin-bottom:20px;">
+        <button type="button" class="btn btn-light" id="program" data-type="cardio">Cardio</button>
+        <button type="button" class="btn btn-light" id="program" data-type="bodybuilding">Bodybuilding</button>
+        <button type="button" class="btn btn-light" id="program" data-type="strength">Strength</button>
+    </div>
+    <div class="container">
+        <div id="cardio">
+            Nothing is better for the heart than having a good cardio level. By increasing your stamina you will be suprised just how much
+            it actually affects your daily life. We have a variety of different excercises that you can try and decide for yourself which one
+            do you like the most.
+        </div>
+
+        <div id="bodybuilding" class="program">
+            If you want to sculpt your body to be beach ready or just enjoy building muscle you can select bodybuilding as the type of workout
+            you wish to do. In general when bodybuilding time under tension is the most important thing so the excercises we have picked involve
+            lighter weights, but higher intensity,
+            You will be presented with different excercises that target different muscle groups so you can try them out and 
+            decide which ones feel the best.
+        </div>
+
+        <div id="strength" class="program">
+            Gaining functional and static strenght is something that can feel amazing when you realise how much stronger you are getting each week!
+            You dont even need to lift super-heavy and dangerous weight to acheive an amazing strength compared to 99% of people who dont engage
+            in physical activity. The excercises that we have picked for this regime involve the most important muscles and are excelent for 
+            gradual increase in the weight lifted.
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block script %}
+    <script src="{% static 'pfitness/programs.js' %}"></script>
+{% endblock %}
