@@ -23,8 +23,18 @@ function update_list(button) {
     })
     if (button.dataset.action === 'add') {
         button.dataset.action = 'remove';
+        button.removeAttribute('class');
+        button.classList.add('btn');
+        button.classList.add('btn-danger');
+        button.classList.add('mb-4');
+        button.innerHTML = 'Remove from your exercises';
     }
     else {
         button.dataset.action = 'add';
+        button.removeAttribute('class');
+        button.classList.add('btn');
+        button.classList.add('btn-success');
+        button.classList.add('mb-4');
+        button.innerHTML = 'Add to your exercises';
     }
 }
