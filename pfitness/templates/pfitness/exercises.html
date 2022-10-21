@@ -7,20 +7,24 @@
 {% endblock %}
 
 {% block body %}
-<h2 style="text-align:center;">Choose what excercises to view:</h2>
-<label hidden id="userlevel">{{user.workout_type}}</label>
-<div class="container">
-    <div class="container" style="margin-bottom:20px;">
+<div class="container text-center">
+    <h2 class="mb-3">Choose what excercises to view:</h2>
+    <label hidden id="userlevel">{{user.workout_type}}</label>
+</div>
+
+<div class="container text-center">
+    <div class="container mb-4">
         <button type="button" class="btn btn-light" id="type" data-type="cardio">Cardio</button>
         <button type="button" class="btn btn-light" id="type" data-type="bodybuilding">Bodybuilding</button>
         <button type="button" class="btn btn-light" id="type" data-type="strength">Strength</button>
     </div>
 </div>
+
 <div class="spinner-border text-success" id="loader" role="status">
     <span class="visually-hidden"></span>
 </div>
+
 <div class="container" id="exlist">
-    
 </div>
 {% endblock %}
 

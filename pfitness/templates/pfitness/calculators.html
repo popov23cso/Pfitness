@@ -6,18 +6,20 @@
 {% endblock %}
 
 {% block body %}
-<h3 style="margin-bottom: 40px;text-align: center;">
-    Our diet calculators:
-</h3>
+<div class="container text-center mb-4">
+    <h3>
+        Our diet calculators:
+    </h3>
+</div>
 
-<div style="margin-bottom: 30px;text-align: center;" class="container">
+<div style="margin-bottom: 30px" class="container text-center mb-5">
     <button type="button" class="btn btn-light" id="calculator" data-type="calories">Calories</button>
     <button type="button" class="btn btn-light" id="calculator" data-type="protein">Protein</button>
 </div>
 
 <div id="calories">
     <form id="calorieform">
-        <select class="form-select" id="calorieselect" style="margin-bottom: 20px;">
+        <select class="form-select mb-3" id="calorieselect">
             <option selected disabled>Select your goal</option>
             <option value="1">Maintaining</option>
             <option value="2">Bulking</option>
@@ -27,7 +29,7 @@
           <label for="weight" class="form-label">Weight in kg</label>
           <input class="form-control" id="weight" required autocomplete="off" >
         </div>
-        <button type="submit" class="btn btn-primary" style="margin-bottom: 20px;">Calculate</button>
+        <button type="submit" class="btn btn-primary mb-3">Calculate</button>
         <p>
             Daily calories needed: <text id="result"></text>
         </p>
@@ -41,7 +43,7 @@
           <label for="pweight" class="form-label">Weight in kg</label>
           <input class="form-control" id="pweight" required autocomplete="off">
         </div>
-        <button type="submit" class="btn btn-primary" style="margin-bottom: 20px;">Calculate</button>
+        <button type="submit" class="btn btn-primary mb-3">Calculate</button>
         <p>
             Grams of protein per day: <text id="presult"></text>
         </p>

@@ -10,8 +10,9 @@
 {% endblock %}
 
 {% block body %}
-
-<h2>{{exercise.name}}:</h2>
+<div class="container">
+    <h2>{{exercise.name}}:</h2>
+</div>
 
 <div class="container">
     <p>Description: {{exercise.description}}</p>
@@ -22,9 +23,9 @@
 </div>
 <div class="container">
 {% if check %}
-    <button type="button" class="btn btn-danger" id="listbtn" style="margin-bottom: 20px;" data-action="remove" data-pk="{{exercise.pk}}">Remove from your exercises</button>
+    <button type="button" class="btn btn-danger mb-4" id="listbtn" data-action="remove" data-pk="{{exercise.pk}}">Remove from your exercises</button>
 {% else %}
-    <button type="button" class="btn btn-success" id="listbtn" style="margin-bottom: 20px;" data-action="add" data-pk="{{exercise.pk}}">Add to your exercises</button>  
+    <button type="button" class="btn btn-success mb-4" id="listbtn" data-action="add" data-pk="{{exercise.pk}}">Add to your exercises</button>  
 {% endif %}
     <br>
     <a href="{% url 'exercises' %}" class="btn btn-primary btn-lg " tabindex="-1" role="button" aria-disabled="true">Go back to exercises</a>

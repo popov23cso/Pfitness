@@ -4,11 +4,13 @@
     Foods
 {% endblock %}
 {% block body %}
-<h2 style="text-align:center;">Sources of {{type}}</h2>
-<h3 style="text-align:center;">Nutriton facts per 100g:</h3>
+<div class="container text-center">
+    <h2>Sources of {{type}}</h2>
+    <h3>Nutriton facts per 100g:</h3>
+</div>
 <div class="container">
     {% for food in foods %}
-    <div class="d-flex justify-content-center" style="margin-bottom:15px;">
+    <div class="d-flex justify-content-center mb-4">
         <div class="d-block p-2 bg-primary text-white" style="width: 250px;">
             {{food}}
             <br>

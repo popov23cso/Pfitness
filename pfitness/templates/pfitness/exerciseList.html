@@ -11,13 +11,15 @@
 
 
 {% block body %}
-<h2 style="text-align:center;">My exercises:</h2>
+<div class="container text-center">
+    <h2>My exercises:</h2>
+</div>
 
 <div class="container">
     {% if exercises %}
     <ul class="list-group" id="notelist">
         {% for ex in exercises %}
-            <div style="border:thin solid; border-radius: 25px; padding: 20px; margin-bottom: 20px;" id="record" data-name="{{ex.name}}">
+            <div class="mb-4 p-4"style="border:thin solid; border-radius: 25px;" id="record" data-name="{{ex.name}}">
                 <text>
                     {{ex.name}}
                     <br>
