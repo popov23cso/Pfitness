@@ -32,3 +32,9 @@ body {
     color:black;
     margin-bottom: 10px;
 }
+
+.record {
+    border: thin solid;
+    border-radius: 25px;
+    padding: 20px;
+}
