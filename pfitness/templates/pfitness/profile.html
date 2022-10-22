@@ -27,36 +27,36 @@
         </div>
       </div>
 
-    <div class="container" style="margin-bottom: 30px;">
-        <text style="margin-right: 20px;">
+    <div class="container mb-3">
+        <text>
             Your fitness level is:  <text id="lvlvalue">{{user.level}}</text>.
         </text>
         <br>
-        <button type="button" id="selectbtn" class="btn btn-success" data-type="lvl" data-action="updatelevel" data-userid="{{user.pk}}">Update</button>
+        <button type="button" id="selectbtn" class="btn btn-success mt-2" data-type="lvl" data-action="updatelevel" data-userid="{{user.pk}}">Update</button>
     </div>
 
-    <div class="container" style="margin-bottom: 30px;">
-        <text style="margin-right: 20px;">
+    <div class="container mb-3">
+        <text>
             Your current weight is:  <text id="weightvalue">{{user.weight}}</text> kg.
         </text>
         <br>
-        <button type="button" id="calcbtn" class="btn btn-success" data-type="weight" data-action="updateweight" data-userid="{{user.pk}}">Update</button>
+        <button type="button" id="calcbtn" class="btn btn-success mt-2" data-type="weight" data-action="updateweight" data-userid="{{user.pk}}">Update</button>
     </div>
     
-    <div class="container" style="margin-bottom: 30px;">
-        <text style="margin-right: 20px;">
+    <div class="container mb-3">
+        <text>
             Your current calorie goal is:  <text id="calorievalue">{{user.calorie_goal}}</text> kcal.
         </text>
         <br>
-        <button type="button" id="calcbtn" class="btn btn-success" data-type="calorie" data-action="updatecalories" data-userid="{{user.pk}}">Update</button>
+        <button type="button" id="calcbtn" class="btn btn-success mt-2" data-type="calorie" data-action="updatecalories" data-userid="{{user.pk}}">Update</button>
     </div>
 
-    <div class="container" style="margin-bottom: 30px;">
-        <text style="margin-right: 20px;">
+    <div class="container mb-3">
+        <text>
             Your workout type is: <text id="wrkvalue">{{user.workout_type}}</text>.
         </text>
         <br>
-        <button type="button" id="selectbtn" class="btn btn-success" data-type="wrk" data-action="updateworkout" data-userid="{{user.pk}}">Update</button>
+        <button type="button" id="selectbtn" class="btn btn-success mt-2" data-type="wrk" data-action="updateworkout" data-userid="{{user.pk}}">Update</button>
     </div>
 </div>
 {% endblock %}
