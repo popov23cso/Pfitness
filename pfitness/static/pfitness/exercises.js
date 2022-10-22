@@ -32,10 +32,8 @@ function get_excercises(type) {
 
 function render_exercises(exercise) {
     const record = document.createElement('div');
-    record.style.border = 'thin solid';
-    record.style.borderRadius = '25px';
-    record.style.padding = '20px';
-    record.style.marginBottom = '20px';
+    record.classList.add('record');
+    record.classList.add('mb-3');
     record.innerHTML = `${exercise['name']} <br>
                         Level: ${exercise['level']}`;
     record.addEventListener('click', () => {
