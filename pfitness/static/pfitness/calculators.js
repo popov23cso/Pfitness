@@ -23,21 +23,21 @@ function show_content(content) {
     })
 }
 
+const weight = document.querySelector('#weight')
+const type = document.querySelector('#calorieselect');
 function calculate_calories(event) {
     event.preventDefault();
-    const type = document.querySelector('#calorieselect');
     let goal = type.options[type.selectedIndex].text;
-    let weight = document.querySelector('#weight').value;
     if (goal === 'Bulking') {
-        let result = (weight * 35) + 250;
+        let result = (weight.value * 35) + 250;
         document.querySelector('#result').innerHTML = result;
     }
     else if (goal === 'Maintaining') {
-        let result = weight * 35;
+        let result = weight.value * 35;
         document.querySelector('#result').innerHTML = result;
     }
     else if (goal === 'Losing weight') {
-        let result = (weight * 35) - 250;
+        let result = (weight.value * 35) - 250;
         document.querySelector('#result').innerHTML = result;
     }
     else {
@@ -45,9 +45,8 @@ function calculate_calories(event) {
     }
 }
 
+const pweight = document.querySelector('#pweight')
 function calculate_protein(event) {
     event.preventDefault();
-    let weight = document.querySelector('#pweight').value;
-    document.querySelector('#presult').innerHTML = weight * 1.8;
-
+    document.querySelector('#presult').innerHTML = pweight.value * 1.8;
 }
