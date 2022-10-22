@@ -1,15 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const csrf_token = document.getElementsByName('csrfmiddlewaretoken')[0].value;
     document.querySelectorAll('#listbtn').forEach(button => {
         button.onclick = () => {
-            update_list(button, csrf_token);
+            update_list(button);
         }
     })
 })
 
 
-
-function update_list(button, token) {    
+const csrf_token = document.getElementsByName('csrfmiddlewaretoken')[0].value;
+function update_list(button) {    
     fetch(`/manage_list`, {
         method: 'PUT',
         body : JSON.stringify({
@@ -18,7 +17,7 @@ function update_list(button, token) {
         }),
         credentials: 'same-origin',
         headers: {
-            'x-csrftoken': token
+            'x-csrftoken': csrf_token
         }
     })
     if (button.dataset.action === 'add') {
