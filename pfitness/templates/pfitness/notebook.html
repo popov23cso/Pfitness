@@ -21,11 +21,17 @@
     <button type="button" id="addnote" class="btn btn-light">Add note</button>
 </div>
 <br>
-<h3>All notes:</h3>
-<br>
-<div class="container">
-    {% if notes %}
+
+<div class="container mb-3" id="recents">
+    <h3>Recent notes:</h3>
     <ul class="list-group" id="notelist">
+    </ul>
+</div>
+
+<div class="container">
+    <h3 class="mb-3">All notes:</h3>
+    {% if notes %}
+    <ul class="list-group">
         {% for note in notes %}
         <li class="list-group-item" id="note">{{note.content}} <br> {{note.timestamp}}</li>
         {% endfor %}
