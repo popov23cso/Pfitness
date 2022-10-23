@@ -28,16 +28,16 @@ function change_mode() {
         document.body.style.color = 'black';
 
         if (location.pathname === '/programs') {
-            adjust_item_color(['program'], 'white');
+            adjust_item_color(['program'], 'light');
             }
         if (location.pathname === '/calculators') {
-            adjust_item_color(['calculator'], 'white');
+            adjust_item_color(['calculator'], 'light');
             }
         if (location.pathname === '/notebook') {
-            adjust_item_color(['addnote', 'notecontent', 'note', 'notepages'], 'white');
+            adjust_item_color(['addnote', 'notecontent', 'note', 'notepages'], 'light');
             }
         if (location.pathname === '/exercises') {
-            adjust_item_color(['type'], 'white');
+            adjust_item_color(['type'], 'light');
             }}
         
 

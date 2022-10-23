@@ -11,11 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 
-
+const loader = document.querySelector('#loader');
+const exlist = document.querySelector('#exlist');
 function get_excercises(type) {
-    document.querySelector('#exlist').innerHTML = '';
-    document.querySelector('#loader').style.display = 'block';
-    document.querySelector('#exlist').style.display = 'none';
+    exlist.innerHTML = '';
+    loader.style.display = 'block';
+    exlist.style.display = 'none';
     fetch(`exercises/${type}`)
     .then(response => response.json())
     .then(exlist => {
@@ -24,8 +25,8 @@ function get_excercises(type) {
     });
     });
     setTimeout(() => {  
-    document.querySelector('#loader').style.display = 'none';
-    document.querySelector('#exlist').style.display = 'block';
+    loader.style.display = 'none';
+    exlist.style.display = 'block';
     }, 250);
 }
 
@@ -39,5 +40,5 @@ function render_exercises(exercise) {
     record.addEventListener('click', () => {
         window.location.href = `/exercise/${exercise["name"]}`
     })
-    document.querySelector('#exlist').append(record);
+    exlist.append(record);
 }

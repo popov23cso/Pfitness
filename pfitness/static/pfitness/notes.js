@@ -1,15 +1,19 @@
+const content = document.querySelector('#notecontent');
+const notelist = document.querySelector('#notelist');
+const recentblock = document.querySelector('#recents');
+
 document.addEventListener('DOMContentLoaded', () => {
+    recentblock.style.display = 'none';
     document.querySelector('#addnote').addEventListener('click', add_note);
 })
 
 
 function add_note()
 {
-    const content = document.querySelector('#notecontent');
     if (content.value === '') {
         return;
     }
-    const notelist = document.querySelector('#notelist');
+    recentblock.style.display = 'block';
     const newitem = document.createElement('li');
     newitem.innerHTML = `${content.value} <br> Just now`;
     newitem.classList.add('list-group-item');

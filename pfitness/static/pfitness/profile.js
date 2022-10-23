@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 
+const csrf_token = document.getElementsByName('csrfmiddlewaretoken')[0].value;
+
 function update_weight(button)
 {
     const current = document.querySelector(`#${button.dataset.type}value`);
@@ -26,8 +28,7 @@ function update_weight(button)
     save.classList.add('btn-success');
     button.parentNode.replaceChild(save, button);
 
-    save.addEventListener('click', () => {
-        csrf_token = document.getElementsByName('csrfmiddlewaretoken')[0].value;
+    save.addEventListener('click', () => {    
         current.innerHTML = edit.value;
         edit.parentNode.replaceChild(current, edit);
         fetch(`/profile_update/${button.dataset.action}/${button.dataset.userid}`, {
@@ -71,7 +72,6 @@ function update_level(button)
     save.addEventListener('click', () => {
         current.innerHTML = edit.value;
         edit.parentNode.replaceChild(current, edit);
-        csrf_token = document.getElementsByName('csrfmiddlewaretoken')[0].value;
         fetch(`/profile_update/${button.dataset.action}/${button.dataset.userid}`, {
             method: 'PUT',
             body : JSON.stringify({
