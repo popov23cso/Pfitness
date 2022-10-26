@@ -28,6 +28,11 @@
             </div>
         {% endfor %}
     </ul>
+    {% else %}
+    <div class="container text-center">
+        <h3>Your exercise list is empty! If you want to add some click the button down!</h3>
+        <a href="{% url 'exercises' %}" class="btn btn-success"  role="button">View exercises!</a>
+    </div>
     {% endif %}
 </div>
 
