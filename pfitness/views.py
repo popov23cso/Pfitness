@@ -19,8 +19,9 @@ def login_view(request):
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
-        user = authenticate(request, username=username, password=password)
 
+        #Attempt to log the user in
+        user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
             present = datetime.datetime.now().date()
@@ -34,21 +35,25 @@ def login_view(request):
             return render(request, "pfitness/login.html", {
                 "error": "Invalid username and/or password!"
             })
+
     else:    
         return render(request, "pfitness/login.html")
 
 
 def register(request):
+
+    #Accept only POST requests
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
-        email = request.POST["email"]
         check = request.POST["passwordcheck"]
+        email = request.POST["email"]
         if password != check:
             return render(request, "pfitness/register.html", {
                 "error": "Passwords must match!"
             })
 
+        #Attempt to create a new user
         try:
             user = User.objects.create_user(username, email, password)
             user.save()
@@ -56,6 +61,7 @@ def register(request):
             return render(request, "pfitness/register.html", {
                 "error": "Username already taken!"
             })
+
         streak = Streak(user=user)
         streak.save()
         login(request, user)
@@ -65,6 +71,8 @@ def register(request):
 
 
 def logout_view(request):
+
+    #Log the user out
     logout(request)
     return redirect("index")
 
@@ -89,6 +97,8 @@ def calculators(request):
 
 @login_required
 def foods(request, type):
+
+    #Check if the requested food type exists
     if type not in food_types:
         return render(request, "pfitness/error.html", {
             "error": "No such food-type exists in our database!"
@@ -104,6 +114,8 @@ def foods(request, type):
 def profile(request):
     streak = Streak.objects.get(user=request.user)
     present = datetime.datetime.now().date()
+
+    #If a day has passed update the users streak
     if present > streak.last_day.date():
         streak.streak += 1
         streak.last_day = datetime.datetime.now()
@@ -114,11 +126,17 @@ def profile(request):
 
 @login_required
 def update_profile(request, action, user_id):
+
+    #Accept only PUT requests
     if request.method == "PUT":
         tmp = json.loads(request.body)
         value = tmp.get("value")
+
+        #Check if all of the needed data is provided
         if not action or not value or not user_id:
             return JsonResponse({"error": "missing information!"}, status=404)
+        
+        #Check if the requested user exists and if an user doesnt try to change another users personal stats
         try:
             user = User.objects.get(pk=user_id)
         except User.DoesNotExist:
@@ -126,6 +144,7 @@ def update_profile(request, action, user_id):
         if request.user != user:
             return JsonResponse({"error": "Only the owner of the profile can edit theese values!"}, status=404)
 
+        #Update the users personal stats depending on the action selected
         if action == "updateweight":
             try:
                 value = int(value)
@@ -162,6 +181,8 @@ def update_profile(request, action, user_id):
         
 @login_required
 def notebook(request):
+
+    #Loaded paginated version of the users noted - 4 at a time
     notes = Paginator(Notes.objects.filter(user=request.user).order_by("-timestamp").all(), 4)
     step = request.GET.get('page')
     paginated = notes.get_page(step)
@@ -171,6 +192,8 @@ def notebook(request):
 
 @login_required
 def add_note(request):
+
+    #Accept only PUT requests
     if request.method == "PUT":
         tmp = json.loads(request.body)
         content = tmp.get("content")
@@ -185,6 +208,8 @@ def add_note(request):
 
 @login_required
 def get_exercises(request, type):
+
+    #Check the requested exercise type
     if type not in programs:
         return JsonResponse({"error": "Invalid type."}, status=400)
     allex = Excercise.objects.filter(excercise_type=type)
@@ -197,6 +222,8 @@ def exercises(request):
 
 @login_required
 def exercise(request, ex_name):
+
+    #Try to get an exercise by name
     try:
         ex = Excercise.objects.get(name=ex_name)
     except Excercise.DoesNotExist:
@@ -204,6 +231,7 @@ def exercise(request, ex_name):
             "error": "No such exercise in our database!"
         })
 
+    #Check if the execise is in the users personal list
     try:
         exlist = ExcerciseList.objects.get(user=request.user)
         exercises = exlist.exercise_list.all()
@@ -216,6 +244,7 @@ def exercise(request, ex_name):
             check = False
     else:
         check = False
+
     return render(request, "pfitness/exercise.html", {
         "exercise": ex,
         "check": check
@@ -224,6 +253,8 @@ def exercise(request, ex_name):
 
 @login_required
 def exercise_list(request):
+
+    #Try to get the users personal exercise list
     try:
         exlist = ExcerciseList.objects.get(user=request.user)
         exercises = exlist.exercise_list.all()
@@ -236,13 +267,18 @@ def exercise_list(request):
 
 @login_required
 def manage_list(request):
+
+    #Accept only PUT requests
     if request.method == "PUT":
         tmp = json.loads(request.body)
         ex_pk = tmp.get("ex_pk")
         action = tmp.get("action")
+
+        #Check for mising data
         if not ex_pk or not action:
             return JsonResponse({"error": "Missing input data"}, status=404)
 
+        #Check if the exercise that is requested exists
         try:
             ex = Excercise.objects.get(pk=ex_pk)
         except Excercise.DoesNotExist:
