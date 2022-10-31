@@ -121,7 +121,7 @@ def profile(request):
         streak.last_day = datetime.datetime.now()
         streak.save()
     
-    leaderboard = Streak.objects.all()[:5]
+    leaderboard = Streak.objects.order_by("-streak")[:5]
     return render(request, "pfitness/profile.html", {
         "streak": streak.streak,
         "leaderboard": leaderboard
