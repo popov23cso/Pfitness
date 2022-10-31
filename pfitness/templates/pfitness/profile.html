@@ -12,51 +12,61 @@
 
 {% block body %}
 <div class="container">
-    <h3>{{user.username}}</h3>
-    <p>
-        Your streak is {{streak}}
-    </p>
-    <p>
-        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#streakq" aria-expanded="false">
-          How do i increase my streak?
-        </button>
-    </p>
-      <div class="collapse" id="streakq">
-        <div class="card card-body" style="color:black">
-          You can increase your streak by logging in daily!
+    <div class="row">
+        <div class="col">
+            <p class="h2">{{user.username}}</p>
+            <p>
+                Your streak is {{streak}}
+            </p>
+            <p>
+                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#streakq" aria-expanded="false">
+                How do i increase my streak?
+                </button>
+            </p>
+            <div class="collapse" id="streakq">
+                <div class="card card-body" style="color:black">
+                You can increase your streak by logging in daily!
+                </div>
+            </div>
+
+            <div class="container mb-3">
+                <text>
+                    Your fitness level is:  <text id="lvlvalue">{{user.level}}</text>.
+                </text>
+                <br>
+                <button type="button" id="selectbtn" class="btn btn-success mt-2" data-type="lvl" data-action="updatelevel" data-userid="{{user.pk}}">Update</button>
+            </div>
+
+            <div class="container mb-3">
+                <text>
+                    Your current weight is:  <text id="weightvalue">{{user.weight}}</text> kg.
+                </text>
+                <br>
+                <button type="button" id="calcbtn" class="btn btn-success mt-2" data-type="weight" data-action="updateweight" data-userid="{{user.pk}}">Update</button>
+            </div>
+            
+            <div class="container mb-3">
+                <text>
+                    Your current calorie goal is:  <text id="calorievalue">{{user.calorie_goal}}</text> kcal.
+                </text>
+                <br>
+                <button type="button" id="calcbtn" class="btn btn-success mt-2" data-type="calorie" data-action="updatecalories" data-userid="{{user.pk}}">Update</button>
+            </div>
+
+            <div class="container mb-3">
+                <text>
+                    Your workout type is: <text id="wrkvalue">{{user.workout_type}}</text>.
+                </text>
+                <br>
+                <button type="button" id="selectbtn" class="btn btn-success mt-2" data-type="wrk" data-action="updateworkout" data-userid="{{user.pk}}">Update</button>
+            </div>
         </div>
-      </div>
-
-    <div class="container mb-3">
-        <text>
-            Your fitness level is:  <text id="lvlvalue">{{user.level}}</text>.
-        </text>
-        <br>
-        <button type="button" id="selectbtn" class="btn btn-success mt-2" data-type="lvl" data-action="updatelevel" data-userid="{{user.pk}}">Update</button>
-    </div>
-
-    <div class="container mb-3">
-        <text>
-            Your current weight is:  <text id="weightvalue">{{user.weight}}</text> kg.
-        </text>
-        <br>
-        <button type="button" id="calcbtn" class="btn btn-success mt-2" data-type="weight" data-action="updateweight" data-userid="{{user.pk}}">Update</button>
-    </div>
-    
-    <div class="container mb-3">
-        <text>
-            Your current calorie goal is:  <text id="calorievalue">{{user.calorie_goal}}</text> kcal.
-        </text>
-        <br>
-        <button type="button" id="calcbtn" class="btn btn-success mt-2" data-type="calorie" data-action="updatecalories" data-userid="{{user.pk}}">Update</button>
-    </div>
-
-    <div class="container mb-3">
-        <text>
-            Your workout type is: <text id="wrkvalue">{{user.workout_type}}</text>.
-        </text>
-        <br>
-        <button type="button" id="selectbtn" class="btn btn-success mt-2" data-type="wrk" data-action="updateworkout" data-userid="{{user.pk}}">Update</button>
+        <div class="col">
+            <p class="h2 mb-3">Top 5 streaks</p>
+            {% for leader in leaderboard %}
+                <p class="h5">{{leader.user.username}} - {{leader.streak}}</p>
+            {% endfor %}
+        </div>
     </div>
 </div>
 {% endblock %}
