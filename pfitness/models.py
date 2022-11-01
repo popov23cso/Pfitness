@@ -49,6 +49,13 @@ class Foods(models.Model):
     type = models.CharField(max_length=16)
     def __str__(self):
         return f"{self.name}"
+    def serialize(self):
+        return {
+            "name": self.name,
+            "calories": self.calories,
+            "amount": self.amount,
+            "type": self.type
+        }
 
 
 class Notes(models.Model):
