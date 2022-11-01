@@ -215,16 +215,16 @@ def get_exercises(request, type):
     #Check the requested exercise type
     if type not in programs:
         return JsonResponse({"error": "Invalid type."}, status=400)
-    allex = Excercise.objects.filter(excercise_type=type)
-    return JsonResponse([all.serialize() for all in allex], safe=False)
+    exercises = Excercise.objects.filter(excercise_type=type)
+    return JsonResponse([exercise.serialize() for exercise in exercises], safe=False)
 
 @login_required
-def exercises(request):
+def exercises_view(request):
     return render(request, "pfitness/exercises.html")
 
 
 @login_required
-def exercise(request, ex_name):
+def exercise_view(request, ex_name):
 
     #Try to get an exercise by name
     try:
