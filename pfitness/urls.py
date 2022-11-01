@@ -16,8 +16,8 @@ urlpatterns = [
     path("notebook", views.notebook, name="notebook"),
     path("add_note", views.add_note, name="add_note"),
     path("exercises/<str:type>", views.get_exercises, name="exercise_type"),
-    path("exercises", views.exercises, name="exercises"),
-    path("exercise/<str:ex_name>", views.exercise, name="exercise"),
+    path("exercises", views.exercises_view, name="exercises"),
+    path("exercise/<str:ex_name>", views.exercise_view, name="exercise"),
     path("my_exercises", views.exercise_list, name="exercise_list"),
     path("manage_list", views.manage_list, name="manage_list")
 ]
