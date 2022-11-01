@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     
     setTimeout(() => {
-        get_excercises(document.querySelector('#userlevel').innerHTML);
+        get_excercises(document.querySelector('#usertype').innerHTML);
     }, 500); 
 })
 
