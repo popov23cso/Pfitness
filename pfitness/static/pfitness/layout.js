@@ -36,7 +36,7 @@ function change_mode() {
         if (location.pathname === '/notebook') {
             adjust_item_color(['addnote', 'notecontent', 'note', 'notepages'], 'light');
             }
-        if (location.pathname === '/exercises') {
+        if (location.pathname === '/exercises' || location.pathname === '/foods') {
             adjust_item_color(['type'], 'light');
             }}
         
@@ -56,7 +56,7 @@ function change_mode() {
         if (location.pathname === '/notebook') {
             adjust_item_color(['addnote', 'notecontent', 'note', 'notepages'], 'dark');
         }
-        if (location.pathname === '/exercises') {
+        if (location.pathname === '/exercises' || location.pathname === '/foods') {
             adjust_item_color(['type'], 'dark');
             }}
 
