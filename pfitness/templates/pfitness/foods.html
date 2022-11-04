@@ -1,24 +1,33 @@
 {% extends "pfitness/layout.html" %}
 
+{% load static %}
+
 {% block title %}
     Foods
 {% endblock %}
+
 {% block body %}
 <div class="container text-center">
-    <h2>Sources of {{type}}</h2>
     <h3>Nutriton facts per 100g:</h3>
 </div>
-<div class="container">
-    {% for food in foods %}
-    <div class="d-flex justify-content-center mb-4">
-        <div class="d-block p-2 bg-primary text-white" style="width: 250px;">
-            {{food}}
-            <br>
-            calories: {{food.calories}} kcal
-            <br>
-            {{food.type}}: {{food.amount}}g
-        </div>
+
+<div class="container text-center">
+    <div class="container mb-4">
+        <button type="button" class="btn btn-light" id="type" data-type="protein">Protein</button>
+        <button type="button" class="btn btn-light" id="type" data-type="carb">Carbs</button>
+        <button type="button" class="btn btn-light" id="type" data-type="fat">Fat</button>
     </div>
-    {% endfor %}
 </div>
+
+<div class="spinner-border text-success" id="loader" role="status">
+    <span class="visually-hidden"></span>
+</div>
+
+<div class="container" id="foodlist">
+</div>
+{% endblock %}
+
+
+{% block script %}
+    <script src="{% static 'pfitness/foods.js' %}"></script>
 {% endblock %}

@@ -10,7 +10,7 @@ urlpatterns = [
     path("calculators", views.calculators, name="calculators"),
     path("logout", views.logout_view, name="logout"),
     path("homepage", views.homepage, name="homepage"),
-    path("foods/<str:type>", views.foods, name="foods"),
+    path("foods", views.foods, name="foods"),
     path("profile", views.profile, name="profile"),
     path("profile_update/<str:action>/<str:user_id>", views.update_profile, name="updateprofile"),
     path("notebook", views.notebook, name="notebook"),
@@ -19,5 +19,6 @@ urlpatterns = [
     path("exercises", views.exercises_view, name="exercises"),
     path("exercise/<str:ex_name>", views.exercise_view, name="exercise"),
     path("my_exercises", views.exercise_list, name="exercise_list"),
-    path("manage_list", views.manage_list, name="manage_list")
+    path("manage_list", views.manage_list, name="manage_list"),
+    path("food/<str:type>", views.get_foods, name="get_foods")
 ]

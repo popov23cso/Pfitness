@@ -96,18 +96,11 @@ def calculators(request):
 
 
 @login_required
-def foods(request, type):
+def foods(request):
 
     #Check if the requested food type exists
-    if type not in food_types:
-        return render(request, "pfitness/error.html", {
-            "error": "No such food-type exists in our database!"
-        })
-    foods = Foods.objects.filter(type=type).all()
-    return render(request, "pfitness/foods.html", {
-        "foods": foods,
-        "type": type
-    })
+   
+    return render(request, "pfitness/foods.html")
 
 
 @login_required
@@ -217,6 +210,14 @@ def get_exercises(request, type):
         return JsonResponse({"error": "Invalid type."}, status=400)
     exercises = Excercise.objects.filter(excercise_type=type)
     return JsonResponse([exercise.serialize() for exercise in exercises], safe=False)
+
+
+def get_foods(request, type):
+
+    if type not in food_types:
+        return JsonResponse({"error", "Invalid food type"}, status=400)
+    foodList = Foods.objects.filter(type=type)
+    return JsonResponse([food.serialize() for food in foodList], safe=False)
 
 @login_required
 def exercises_view(request):
